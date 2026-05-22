@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía – Anemia Falciforme</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red:    #C0392B;
+    --dark-red:#8B0000;
+    --cream:  #FDF6EC;
+    --sand:   #E8D5B7;
+    --char:   #1A1A1A;
+    --mid:    #5A3A2A;
+    --accent: #E67E22;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--char);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--dark-red);
+    color: var(--cream);
+    padding: 48px 40px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 18px,
+      rgba(255,255,255,.04) 18px,
+      rgba(255,255,255,.04) 36px
+    );
+  }
+  .header-inner { position: relative; z-index: 1; max-width: 900px; margin: auto; }
+  .badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: .7rem;
+    font-weight: 500;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 6vw, 3.8rem);
+    line-height: 1.05;
+    margin-bottom: 10px;
+  }
+  header h1 span { color: var(--accent); }
+  header p.sub {
+    font-size: .95rem;
+    opacity: .75;
+    max-width: 520px;
+    line-height: 1.6;
+  }
+
+  /* ── LAYOUT ── */
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px 60px;
+    display: grid;
+    gap: 24px;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: #fff;
+    border-radius: 4px;
+    border-left: 5px solid var(--red);
+    padding: 28px 28px 24px;
+    box-shadow: 0 2px 14px rgba(0,0,0,.07);
+    animation: rise .6s ease both;
+  }
+  .card:nth-child(2) { animation-delay: .1s; }
+  .card:nth-child(3) { animation-delay: .2s; }
+  .card:nth-child(4) { animation-delay: .3s; }
+  .card:nth-child(5) { animation-delay: .4s; }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--dark-red);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .icon {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--sand);
+    display: grid;
+    place-items: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .card p, .card li { font-size: .92rem; line-height: 1.7; color: #333; }
+  .card ul { padding-left: 18px; }
+  .card li { margin-bottom: 4px; }
+
+  /* ── PILL TAGS ── */
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .tag {
+    font-size: .78rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .tag-red    { background: #fde8e8; color: var(--dark-red); }
+  .tag-orange { background: #fef0e0; color: #b5540a; }
+  .tag-green  { background: #e8f5e9; color: #2e7d32; }
+
+  /* ── DNA VISUAL ── */
+  .dna-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 14px;
+  }
+  .dna-box {
+    border: 1.5px solid var(--sand);
+    border-radius: 6px;
+    padding: 14px;
+    text-align: center;
+  }
+  .dna-box h4 { font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .dna-box h4.normal { color: #2e7d32; }
+  .dna-box h4.mutada { color: var(--dark-red); }
+  .codon {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .base {
+    width: 32px; height: 32px;
+    border-radius: 4px;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    font-size: .85rem;
+    color: #fff;
+  }
+  .base-G { background: #388e3c; }
+  .base-A { background: #1565c0; }
+  .base-T { background: #6a1aaa; }
+  .base-C { background: #e65100; }
+  .base-mut { background: var(--dark-red); outline: 2px solid #ff0; }
+  .arrow { font-size: 1.4rem; color: var(--accent); margin: 8px 0; }
+  .protein-tag {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: .78rem;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+  .pt-normal { background: #e8f5e9; color: #2e7d32; }
+  .pt-mut    { background: #fde8e8; color: var(--dark-red); }
+
+  /* ── RBC VISUAL ── */
+  .rbc-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+  svg.cell { width: 90px; height: 90px; }
+
+  /* ── VERDICT GRID ── */
+  .verdict-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .verdict-item {
+    border-radius: 6px;
+    padding: 16px 12px;
+    text-align: center;
+  }
+  .verdict-item .v-icon { font-size: 1.8rem; }
+  .verdict-item h4 { font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; margin: 6px 0 4px; font-weight: 600; }
+  .verdict-item p  { font-size: .78rem; line-height: 1.5; }
+  .vi-red   { background: #fde8e8; }
+  .vi-amber { background: #fef3cd; }
+  .vi-blue  { background: #e3f2fd; }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-size: .75rem;
+    color: #888;
+  }
+
+  @media (max-width: 520px) {
+    .dna-compare, .verdict-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="badge">Mutaciones Génicas · Biología 11°</div>
+    <h1>Anemia<br><span>Falciforme</span></h1>
+    <p class="sub">Una mutación puntual en el gen de la β-globina que transforma los glóbulos rojos y cambia la vida de millones de personas.</p>
+  </div>
+</header>
+
+<main>
+
+  <!-- 1. QUÉ MUTACIÓN OCURRE -->
+  <div class="card">
+    <div class="card-title"><div class="icon">🧬</div> ¿Qué mutación ocurre?</div>
+    <p>La anemia falciforme es causada por una <strong>mutación puntual</strong> (sustitución de un solo nucleótido) en el <strong>codón 6 del gen HBB</strong>, que codifica la cadena beta de la hemoglobina.</p>
+
+    <div class="dna-compare">
+      <div class="dna-box">
+        <h4 class="normal">ADN Normal</h4>
+        <div class="codon">
+          <div class="base base-G">G</div>
+          <div class="base base-A">A</div>
+          <div class="base base-G">G</div>
+        </div>
+        <div class="arrow">↓</div>
+        <span class="protein-tag pt-normal">Ácido glutámico (Glu)</span>
+      </div>
+      <div class="dna-box">
+        <h4 class="mutada">ADN Mutado</h4>
+        <div class="codon">
+          <div class="base base-G">G</div>
+          <div class="base base-mut">T</div>
+          <div class="base base-G">G</div>
+        </div>
+        <div class="arrow">↓</div>
+        <span class="protein-tag pt-mut">Valina (Val) ← error</span>
+      </div>
+    </div>
+
+    <div class="tags" style="margin-top:16px;">
+      <span class="tag tag-red">Mutación puntual</span>
+      <span class="tag tag-red">Sustitución: A → T</span>
+      <span class="tag tag-orange">Gen HBB · Cromosoma 11</span>
+    </div>
+  </div>
+
+  <!-- 2. EFECTO EN EL GLÓBULO ROJO -->
+  <div class="card">
+    <div class="card-title"><div class="icon">🩸</div> Efecto en los glóbulos rojos</div>
+    <div class="rbc-row">
+      <!-- Glóbulo normal (bicóncavo) -->
+      <div style="text-align:center">
+        <svg class="cell" viewBox="0 0 100 100">
+          <ellipse cx="50" cy="50" rx="42" ry="28" fill="#e57373" opacity=".9"/>
+          <ellipse cx="50" cy="50" rx="28" ry="14" fill="#c62828" opacity=".5"/>
+          <text x="50" y="88" text-anchor="middle" font-size="9" fill="#555" font-family="DM Sans">Normal (disco)</text>
+        </svg>
+      </div>
+      <div style="font-size:1.8rem; color:var(--accent)">→</div>
+      <!-- Glóbulo falciforme -->
+      <div style="text-align:center">
+        <svg class="cell" viewBox="0 0 100 100">
+          <path d="M20,50 Q30,15 60,20 Q85,25 80,50 Q75,75 50,78 Q25,80 20,50 Z"
+                fill="#8B0000" opacity=".85"/>
+          <text x="50" y="92" text-anchor="middle" font-size="9" fill="#555" font-family="DM Sans">Falciforme (hoz)</text>
+        </svg>
+      </div>
+      <div style="flex:1; min-width:180px;">
+        <p>La valina, a diferencia del ácido glutámico, es <strong>hidrofóbica</strong>. Esto hace que las hemoglobinas mutadas se <strong>polimericen</strong> (se peguen entre sí) cuando hay poca concentración de oxígeno, deformando el glóbulo rojo en forma de <strong>hoz o media luna</strong>.</p>
+      </div>
+    </div>
+    <ul style="margin-top:12px;">
+      <li>Los glóbulos falciformes <strong>obstruyen los vasos sanguíneos</strong>, causando dolor intenso.</li>
+      <li>Son frágiles y se destruyen rápido → <strong>anemia crónica</strong>.</li>
+      <li>Reducen el transporte de oxígeno a los tejidos y órganos.</li>
+    </ul>
+  </div>
+
+  <!-- 3. HEREDITARIA O ADQUIRIDA -->
+  <div class="card">
+    <div class="card-title"><div class="icon">👨‍👩‍👧</div> ¿Es hereditaria o adquirida?</div>
+    <p>Es <strong>hereditaria</strong>, con patrón de herencia <strong>autosómico recesivo</strong>. Esto significa:</p>
+    <ul style="margin-top:10px;">
+      <li>Cada progenitor debe transmitir <strong>un alelo mutado (HbS)</strong> para que el hijo desarrolle la enfermedad.</li>
+      <li>Una persona con solo <strong>un alelo HbS</strong> es "portadora" (rasgo falciforme) y generalmente no manifiesta síntomas graves.</li>
+      <li>Si <strong>ambos padres son portadores</strong>, existe un 25 % de probabilidad de tener un hijo con la enfermedad.</li>
+    </ul>
+    <div class="tags" style="margin-top:14px;">
+      <span class="tag tag-red">Hereditaria</span>
+      <span class="tag tag-orange">Autosómica recesiva</span>
+      <span class="tag tag-orange">Cromosoma 11 (no sexual)</span>
+    </div>
+  </div>
+
+  <!-- 4. BENEFICIOSA, NEUTRA O PERJUDICIAL -->
+  <div class="card">
+    <div class="card-title"><div class="icon">⚖️</div> ¿Es beneficiosa, neutra o perjudicial?</div>
+    <p>Depende del <strong>contexto evolutivo</strong>: la mutación tiene efectos <em>duales</em>.</p>
+
+    <div class="verdict-grid">
+      <div class="verdict-item vi-red">
+        <div class="v-icon">❌</div>
+        <h4>Perjudicial</h4>
+        <p>Con dos copias mutadas (HbSS): anemia grave, crisis de dolor, daño orgánico y menor esperanza de vida.</p>
+      </div>
+      <div class="verdict-item vi-amber">
+        <div class="v-icon">⚡</div>
+        <h4>Neutra / Ventajosa</h4>
+        <p>Con una sola copia (HbAS): <strong>mayor resistencia a la malaria</strong>. El parásito <em>Plasmodium</em> no se desarrolla bien en estos glóbulos.</p>
+      </div>
+      <div class="verdict-item vi-blue">
+        <div class="v-icon">🌍</div>
+        <h4>Selección natural</h4>
+        <p>Por eso el alelo persiste en regiones con alta prevalencia de malaria (África subsahariana, India, Mediterráneo).</p>
+      </div>
+    </div>
+
+    <div class="tags" style="margin-top:16px;">
+      <span class="tag tag-red">Perjudicial (homocigota)</span>
+      <span class="tag tag-green">Ventajosa contra malaria (heterocigota)</span>
+    </div>
+  </div>
+
+  <!-- 5. RESUMEN RÁPIDO -->
+  <div class="card" style="border-left-color: var(--accent);">
+    <div class="card-title" style="color: #b5540a;"><div class="icon">📋</div> Resumen de la mutación</div>
+    <ul>
+      <li><strong>Tipo de mutación:</strong> Sustitución puntual (A → T) en el codón 6 del gen HBB.</li>
+      <li><strong>Consecuencia molecular:</strong> Ácido glutámico → Valina en la β-globina.</li>
+      <li><strong>Herencia:</strong> Autosómica recesiva (hereditaria).</li>
+      <li><strong>Efecto:</strong> Perjudicial en homocigotos; protector frente a malaria en heterocigotos.</li>
+      <li><strong>Prevalencia:</strong> Afecta aprox. 300 000 recién nacidos al año en todo el mundo (OMS).</li>
+    </ul>
+  </div>
+
+</main>
+
+<footer>Colegio Virtual Siglo XXI · Biología 11° · Segundo Periodo · Guía de Aprendizaje 1</footer>
+
+</body>
+</html>
